@@ -1,0 +1,99 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fluent-filepicker"
+dynamic = ["version"]
+description = "Fluent Design file picker widgets for PyQt6"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+authors = [
+    {name = "mIcHyAmRaNe", email = "6m63er17c@mozmail.com"}
+]
+maintainers = [
+    {name = "mIcHyAmRaNe", email = "6m63er17c@mozmail.com"}
+]
+keywords = [
+    "pyqt6",
+    "filepicker",
+    "fluent",
+    "fluent-design",
+    "windows11",
+    "ui",
+    "widget",
+    "qt",
+    "gui"
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: User Interfaces",
+    "Topic :: Software Development :: Widget Sets",
+    "Environment :: X11 Applications :: Qt",
+    "Environment :: Win32 (MS Windows)",
+    "Environment :: MacOS X",
+]
+dependencies = [
+    "PyQt6>=6.4.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-qt>=4.2",
+    "pytest-cov>=4.0",
+    "black>=23.0",
+    "isort>=5.12",
+    "mypy>=1.0",
+    "ruff>=0.1",
+]
+docs = [
+    "sphinx>=6.0",
+    "sphinx-rtd-theme>=1.2",
+]
+
+[project.urls]
+Homepage = "https://github.com/michyamrane/fluent-filepicker"
+Documentation = "https://github.com/michyamrane/fluent-filepicker#readme"
+Repository = "https://github.com/michyamrane/fluent-filepicker.git"
+Issues = "https://github.com/michyamrane/fluent-filepicker/issues"
+Changelog = "https://github.com/michyamrane/fluent-filepicker/blob/main/CHANGELOG.md"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.dynamic]
+version = {attr = "fluent_filepicker.__version__"}
+
+[tool.setuptools.package-data]
+"fluent_filepicker" = ["py.typed"]
+
+[tool.black]
+line-length = 100
+target-version = ['py310', 'py311', 'py312']
+
+[tool.isort]
+profile = "black"
+line_length = 100
+
+[tool.ruff]
+line-length = 100
+select = ["E", "F", "W", "I", "N", "UP", "ANN", "S", "B", "A", "C4", "PT"]
+ignore = ["ANN101", "ANN102", "D100", "D104", "N802"]
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+qt_api = "pyqt6"
